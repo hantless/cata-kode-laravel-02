@@ -1,4 +1,4 @@
-<form action="{{ route('appointment.store') }}">
+<form action="{{ route('appointment.store') }}" method="post">
     @csrf
     <label for="name">Nom</label>
     <input type="text" name="name" required />
@@ -10,7 +10,7 @@
     <input type="email" name="email" required />
 
     <label for="appointment">Date du rendez-vous</label>
-    <input type="text" name="appointment" required />
+    <input type="datetime-local" name="appointment" required />
 
     <label for="message">Message</label>
     <textarea name="message" cols="50" rows="5"></textarea>
