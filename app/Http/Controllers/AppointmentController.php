@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Appointment;
+use App\Http\Requests\StoreAppointmentRequest;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -17,11 +18,9 @@ class AppointmentController extends Controller
         return view('appointment.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreAppointmentRequest $request)
     {
-        $appointment = Appointment::create($request->only([
-            'name', 'phone', 'email', 'appointment', 'message'
-        ]));
+        $appointment = Appointment::create($request->validated());
 
         return redirect(route('appointment.index'))->with('status', [
             'type' => 'success',
