@@ -13,6 +13,11 @@ class AppointmentController extends Controller
         return view('appointment.index');
     }
 
+    public function show(Appointment $appointment)
+    {
+        return view('appointment.show', compact('appointment'));
+    }
+
     public function create()
     {
         return view('appointment.create');
